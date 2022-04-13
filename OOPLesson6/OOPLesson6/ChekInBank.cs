@@ -56,6 +56,46 @@ namespace OOPLesson6
                 return _typeChek;
             }
         }
+
+        //**************************************lesson 6************************
+
+        public override bool Equals(object obj)
+        {
+            return obj is ChekInBank bank &&
+                   _numberChek == bank._numberChek &&
+                   _balanc == bank._balanc &&
+                   _typeChek == bank._typeChek;
+        }
+
+        public override int GetHashCode()
+        {
+            return 1205484828 + _numberChek.GetHashCode() + _balanc.GetHashCode() + _typeChek.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            string result = "\nДанные номера счета:" + _numberChek + "\n";
+            result += "Тип счета: " + _typeChek + "\n";
+            result += "Баланс счета: " + _balanc + "\n";
+            return result;
+        }
+
+        public static bool operator ==(ChekInBank a, ChekInBank b)
+        {
+            bool result = false;
+            if (a.balanc == b.balanc && a.numberChek == b.numberChek && a.typeChek == b.typeChek) result = true;
+            return result;
+        }
+        public static bool operator !=(ChekInBank a, ChekInBank b)
+        {
+            bool result = true;
+            if (a.balanc == b.balanc && a.numberChek == b.numberChek && a.typeChek == b.typeChek) result = false;
+            return result;
+        }
+
+
+        //*****************************************lesson 6 ***** выше *********************************
+
         /// <summary>
         /// снятие со счета суммы
         /// </summary>
@@ -138,39 +178,6 @@ namespace OOPLesson6
             return randomChekNumber;
         }
 
-        public override bool Equals(object obj)
-        {
-            return obj is ChekInBank bank &&
-                   _numberChek == bank._numberChek &&
-                   _balanc == bank._balanc &&
-                   _typeChek == bank._typeChek;
-        }
-
-        public override int GetHashCode()
-        {
-            return 1205484828 + _numberChek.GetHashCode() + _balanc.GetHashCode() + _typeChek.GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            string result = "\nДанные номера счета:" + _numberChek + "\n";
-            result += "Тип счета: " + _typeChek + "\n";
-            result += "Баланс счета: " + _balanc + "\n";
-            return result;
-        }
-
-        public static bool operator ==(ChekInBank a, ChekInBank b)
-        {
-            bool result = false;
-            if (a.balanc == b.balanc && a.numberChek == b.numberChek && a.typeChek == b.typeChek) result = true;
-            return result;
-        }
-        public static bool operator !=(ChekInBank a, ChekInBank b)
-        {
-            bool result = true;
-            if (a.balanc == b.balanc && a.numberChek == b.numberChek && a.typeChek == b.typeChek) result = false;
-            return result;
-        }
         public enum TypeChek
         {
             type1,
